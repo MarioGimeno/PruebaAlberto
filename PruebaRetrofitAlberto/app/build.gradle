@@ -1,0 +1,55 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.example.pruebaretrofitalberto'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.pruebaretrofitalberto"
+        minSdk 25
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+// Retrofit para hacer solicitudes HTTP
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+// Gson para convertir las respuestas JSON en objetos Java
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+// OkHttp (utilizado por Retrofit para las peticiones HTTP)
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+
+// OkHttp Logging Interceptor (opcional para debug)
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+
+// Librería para mostrar imágenes desde URLs, como en películas (opcional pero recomendado)
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
